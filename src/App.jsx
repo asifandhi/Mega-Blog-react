@@ -1,16 +1,43 @@
-import { useState } from 'react'
- 
+import { useState, useEffect, use} from 'react'
+import { useDispatch } from 'react-redux'
+import authService from './appwrite/auth'
+import {login, logout} from './store/authSlice'
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
 import './App.css'
-import conf from './conf/conf'
+import { Outlet } from 'react-router-dom'
+
 
 function App() {
 
+  const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    authService.getCurrentUser()
+    .then((userData) => {
+      if(userData){
+        dispatch(login({userData}))
+      }
+      else{
+        dispatch(logout())
+      }
+    })
+    .finally(() => setLoading(false))
+  },[])
+
   
-  return (
-   <>
-    <h1>Meha blog app</h1>
-   </>
-  )
+   return !loading ? (
+    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+      <div className='w-full block'>
+        <Header />
+        <main>
+        TODO:  <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  ) : null
 }
 
 export default App

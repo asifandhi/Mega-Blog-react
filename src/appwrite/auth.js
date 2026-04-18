@@ -22,7 +22,8 @@ export class AuthService {
                 this.login(email,password);
                  
             }else{
-                    throw new Error("Account creation failed");
+                    console.log("Error :: Create account :: ",error);
+                    
             }
             
         } catch (error) {
@@ -37,7 +38,8 @@ export class AuthService {
 
             
         } catch (error) {
-            throw error;
+           console.log("Error :: Login :: ",error);
+           
             
         }
     }
@@ -47,7 +49,15 @@ export class AuthService {
            return await this.account.get();
             
         } catch (error) {
-            throw error;
+                if(error.code === 401){
+                    console.log("No user logged in");
+                }   
+                else{
+                    console.log("Error :: GetCurrentUser :: ");
+                }
+       
+         
+           
         }
         return null;
     }
@@ -57,7 +67,8 @@ export class AuthService {
             await this.account.deleteSessions()
             
         } catch (error) {
-            throw error;
+            console.log("Error :: Logout ");
+            
             
         }
     }
