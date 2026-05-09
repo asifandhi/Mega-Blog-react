@@ -15,24 +15,24 @@ function Header() {
          active : true
       },
       {
-      name: "Login",
-      slug: "/login",
-      active: !authStatus,
+         name: "Login",
+         slug: "/login",
+         active: !authStatus,
       },
       {
-            name: "Signup",
-            slug: "/signup",
-            active: !authStatus,
+         name: "Signup",
+         slug: "/signup",
+         active: !authStatus,
       },
       {
-            name: "All Posts",
-            slug: "/all-posts",
-            active: authStatus,
+         name: "All Posts",
+         slug: "/all-posts",
+         active: authStatus,
       },
       {
-            name: "Add Post",
-            slug: "/add-post",
-            active: authStatus,
+         name: "Add Post",
+         slug: "/add-post",
+         active: authStatus,
       }
    ]
 return (
@@ -54,6 +54,7 @@ return (
                </li>
             ) : null
             )}
+            
             {authStatus && (
                <li>
                   <Logout/>
