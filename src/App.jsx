@@ -17,7 +17,13 @@ function App() {
     authService.getCurrentUser()
     .then((userData) => {
       if(userData){
-        dispatch(login({userData}))
+        dispatch(login({
+          userData:{
+                $id: userData.$id,
+                name: userData.name,
+                email: userData.email,
+            }
+          }))
       }
       else{
         dispatch(logout())

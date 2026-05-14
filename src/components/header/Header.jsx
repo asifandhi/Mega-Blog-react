@@ -12,8 +12,6 @@ function Header() {
    const authStatus = useSelector((state) => state.auth.status)
    const navigate = useNavigate();
 
-   console.log("authStatus", authStatus)
-
    const navItem = [
       {
          name : "Home",
@@ -42,7 +40,6 @@ function Header() {
       }
    ]
 
-   console.log(navItem.map((item) => item.active))
 return (
    <header className='py-3 shadow bg-blue-600 '>
       <Container>
