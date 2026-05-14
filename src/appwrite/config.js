@@ -127,10 +127,10 @@ export class Service {
 
   getFilePreview(fileId) {
     try {
-        return this.bucket.getFilePreview(
+        return this.bucket.getFileView(
             conf.appwriteBucketId,
             fileId
-        ).toString();
+        )
         
     } catch (error) {
             console.log("error :: getFilePreview :: \n", error);
