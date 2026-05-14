@@ -116,7 +116,7 @@ export class Service {
             conf.appwriteBucketId,
             fileId
         )
-        return true;
+      
         
     } catch (error) {
             console.log("error :: deleteFile :: ", error);
