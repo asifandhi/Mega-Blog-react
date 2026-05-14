@@ -1,4 +1,4 @@
-import { useState, useEffect, use} from 'react'
+import { useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux'
 import authService from './appwrite/auth'
 import {login, logout} from './store/authSlice'
@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom'
 
 function App() {
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -32,12 +32,17 @@ function App() {
       <div className='w-full block'>
         <Header />
         <main>
-        TODO:  <Outlet />
+         <Outlet />
         </main>
         <Footer />
       </div>
     </div>
-  ) : null
+  ) : (
+    <div className='flex items-center justify-center w-full h-screen'>
+      <p className='text-xl text-gray-500'>Loading...</p>
+    </div>
+
+  )
 }
 
 export default App

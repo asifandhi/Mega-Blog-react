@@ -1,5 +1,9 @@
 import React from 'react'
-import { Container, Logo, Logout} from '../index.js'
+ 
+
+import Container from '../container/Container.jsx'
+import Logo from '../Logo.jsx'
+import Logout from '../header/Logout.jsx'
 import { Link ,useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -7,6 +11,8 @@ function Header() {
 
    const authStatus = useSelector((state) => state.auth.status)
    const navigate = useNavigate();
+
+   console.log("authStatus", authStatus)
 
    const navItem = [
       {
@@ -35,8 +41,10 @@ function Header() {
          active: authStatus,
       }
    ]
+
+   console.log(navItem.map((item) => item.active))
 return (
-   <header className='py-3 shadow bg-white'>
+   <header className='py-3 shadow bg-blue-600 '>
       <Container>
         <nav className='flex'>
           <div className='mr-4'>
@@ -45,12 +53,17 @@ return (
 
               </Link>
           </div>
+
+
           <ul className='flex ml-auto'>
             {navItem.map((item)=>
             item.active ? (
                <li key = {item.name} >
-                  <button onClick={() => {navigate(item.slug)}} 
-                     className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>{item.name}</button>
+                  
+                  <button
+                     className='inline-block bg-green-300 px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                     onClick={() => {navigate(item.slug)}} 
+                     >{item.name}</button>
                </li>
             ) : null
             )}

@@ -38,11 +38,9 @@ export class Service {
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return (
-        await this,
-        this.databases.updateDocument(
+        await this.databases.updateDocument(
           conf.appwriteDatabaseId,
-          conf,
-          appwriteCollectionId,
+          conf.appwriteCollectionId,
           slug,
           {
             title,
@@ -84,7 +82,7 @@ export class Service {
     }
   }
 
-  async getPOsts(queries = [Query.equal("status", "active")]) {
+  async getPosts(queries = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
