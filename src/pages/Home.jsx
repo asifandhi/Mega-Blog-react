@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import appwriteService from "../appwrite/config";
-// import {service as appwriteService} from '../appwrite/config';
-import {Container} from '../components'
-import {Postcard} from '../components'
+import {Container, Postcard} from '../components'
 import { useSelector } from 'react-redux';
 
 function Home() {
@@ -11,50 +9,34 @@ function Home() {
 
     useEffect(() => {
         appwriteService.getPosts().then((posts) => {
-            if (posts) {
-                setPosts(posts.documents)
-            }
+            if (posts) setPosts(posts.documents)
         })
     }, [])
-  
+
     if (posts.length === 0) {
-        if(authStatus){
-            return(
-                <div className="w-full py-8 mt-4 text-center">
-                <Container>
-                    <div className="flex flex-wrap">
-                        <div className="p-2 w-full">
-                            
-                            <h1 className="text-2xl font-bold cursor-pointer">
-                                No post available 
-                            </h1>
-                        </div>
-                    </div>
-                </Container>
-            </div>
-            )
-        }
         return (
-            <div className="w-full py-8 mt-4 text-center">
+            <div className='w-full min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 flex items-center justify-center'>
                 <Container>
-                    <div className="flex flex-wrap">
-                        <div className="p-2 w-full">
-                            
-                            <h1 className="text-2xl font-bold cursor-pointer">
-                                Login to read posts
-                            </h1>
-                        </div>
+                    <div className='text-center py-20'>
+                        <h1 className='text-4xl font-bold text-purple-600'>
+                            {authStatus ? '✍️ No posts yet!' : '👋 Login to read posts'}
+                        </h1>
+                        <p className='mt-4 text-gray-500 text-lg'>
+                            {authStatus ? 'Be the first to add a post.' : 'Join us and explore amazing content.'}
+                        </p>
                     </div>
                 </Container>
             </div>
         )
     }
+
     return (
-        <div className='w-full py-8'>
+        <div className='w-full py-8 min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50'>
             <Container>
-                <div className='flex flex-wrap'>
+                <h1 className='text-3xl font-bold text-purple-700 mb-6'>Latest Posts</h1>
+                <div className='flex flex-wrap -mx-2'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
+                        <div key={post.$id} className='p-2 w-full sm:w-1/2 lg:w-1/4'>
                             <Postcard {...post} />
                         </div>
                     ))}

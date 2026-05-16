@@ -16,9 +16,11 @@ export default function Protected({children,authentication = true}) {
         }
         setLoader(false);
     },[authentication,authStatus,navigate])
-  return loader ? <div className='flex items-center justify-center w-full h-screen'>
-    <p className='text-xl text-gray-500'>Loading...</p>
-    </div> : <>{children}</>
+  return loader ? (
+    <div className='flex items-center justify-center w-full h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100'>
+        <p className='text-xl font-semibold text-purple-500 animate-pulse'>Loading...</p>
+    </div>
+) : <>{children}</>
 
 }
 

@@ -7,9 +7,7 @@ import Footer from './components/footer/Footer'
 import './App.css'
 import { Outlet } from 'react-router-dom'
 
-
 function App() {
-
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch();
 
@@ -19,11 +17,11 @@ function App() {
       if(userData){
         dispatch(login({
           userData:{
-                $id: userData.$id,
-                name: userData.name,
-                email: userData.email,
-            }
-          }))
+            $id: userData.$id,
+            name: userData.name,
+            email: userData.email,
+          }
+        }))
       }
       else{
         dispatch(logout())
@@ -32,22 +30,18 @@ function App() {
     .finally(() => setLoading(false))
   },[])
 
-  
-   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-      <div className='w-full block'>
-        <Header />
-        <main>
-         <Outlet />
-        </main>
-        <Footer />
-      </div>
+  return !loading ? (
+    <div className='min-h-screen flex flex-col bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50'>
+      <Header />
+      <main className='flex-grow'>
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   ) : (
-    <div className='flex items-center justify-center w-full h-screen'>
-      <p className='text-xl text-gray-500'>Loading...</p>
+    <div className='flex items-center justify-center w-full h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100'>
+      <p className='text-xl font-semibold text-purple-500 animate-pulse'>Loading...</p>
     </div>
-
   )
 }
 
