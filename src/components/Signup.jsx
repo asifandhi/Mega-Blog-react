@@ -10,7 +10,7 @@ function Signup() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {register,handleSubmit} = useForm();
-    const [error,setError] = useState("");
+    const [error,setError] = useState("")
 
     const create = async (data) => {
         setError("");
@@ -24,17 +24,17 @@ function Signup() {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100">
-            <div className='mx-auto w-full max-w-lg bg-white rounded-2xl p-10 shadow-xl border border-purple-100'>
+        <div className=" border border-1  rounded flex items-center justify-center min-h-screen bg-gray-600">
+            <div className='mx-auto w-full max-w-lg bg-black rounded-2xl p-10 shadow-xl border border-white'>
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />
                     </span>
                 </div>
-                <h2 className="text-center text-2xl font-bold leading-tight text-purple-700">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <h2 className="text-center text-2xl font-bold leading-tight text-white">Sign up to create account</h2>
+                <p className="mt-2 text-center text-base text-gray-300">
                     Already have an account?&nbsp;
-                    <Link to="/login" className="font-semibold text-pink-500 hover:text-purple-600 transition-colors duration-200">
+                    <Link to="/login" className="font-semibold text-gray-100 hover:text-amber-400 transition-colors duration-200">
                         Sign In
                     </Link>
                 </p>
@@ -64,7 +64,7 @@ function Signup() {
                             placeholder="Enter your password"
                             {...register("password", { required: true })}
                         />
-                        <Button type="submit" bgColor="bg-gradient-to-r from-pink-500 to-purple-600" className="w-full py-3 text-base">
+                        <Button type="submit"   className="w-full py-3 text-white bg-gray-500 hover:bg-white hover:text-black transition-colors duration-200">
                             Create Account
                         </Button>
                     </div>

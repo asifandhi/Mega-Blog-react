@@ -39,6 +39,7 @@ export class AuthService {
             
         } catch (error) {
            console.log("Error :: Login :: ",error);
+              throw error;
            
             
         }

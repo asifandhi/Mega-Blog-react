@@ -15,10 +15,10 @@ function Home() {
 
     if (posts.length === 0) {
         return (
-            <div className='w-full min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 flex items-center justify-center'>
+            <div className='w-full min-h-screen bg-gray-600 flex items-center justify-center'>
                 <Container>
                     <div className='text-center py-20'>
-                        <h1 className='text-4xl font-bold text-purple-600'>
+                        <h1 className='text-4xl font-bold text-white'>
                             {authStatus ? '✍️ No posts yet!' : '👋 Login to read posts'}
                         </h1>
                         <p className='mt-4 text-gray-500 text-lg'>
@@ -31,9 +31,9 @@ function Home() {
     }
 
     return (
-        <div className='w-full py-8 min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50'>
+        <div className='w-full py-8 min-h-screen bg-gray-700'>
             <Container>
-                <h1 className='text-3xl font-bold text-purple-700 mb-6'>Latest Posts</h1>
+                <h1 className='text-3xl font-bold text-white mb-6'>Latest Posts</h1>
                 <div className='flex flex-wrap -mx-2'>
                     {posts.map((post) => (
                         <div key={post.$id} className='p-2 w-full sm:w-1/2 lg:w-1/4'>

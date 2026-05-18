@@ -86,7 +86,7 @@ export default function PostForm({ post }) {
 
  
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap gap-4 bg-white rounded-2xl p-6 shadow-xl border border-purple-100">
+    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap gap-4 bg-gray-600 rounded-2xl p-6 shadow-xl border border-purple-100">
         <div className="w-2/3 px-2">
             <Input
                 label="Title :"
@@ -130,7 +130,7 @@ export default function PostForm({ post }) {
             />
             <Button
                 type="submit"
-                bgColor={post ? "bg-gradient-to-r from-green-400 to-emerald-500" : "bg-gradient-to-r from-pink-500 to-purple-600"}
+                bgColor={post ? "bg-black" : "bg-black text-white hover:bg-gray-800"}
                 className="w-full py-3 text-base"
             >
                 {post ? "Update" : "Submit"}

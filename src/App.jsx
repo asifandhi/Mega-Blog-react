@@ -31,7 +31,7 @@ function App() {
   },[])
 
   return !loading ? (
-    <div className='min-h-screen flex flex-col bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50'>
+    <div className='min-h-screen flex flex-col bg-white'>
       <Header />
       <main className='flex-grow'>
         <Outlet />
@@ -39,8 +39,8 @@ function App() {
       <Footer />
     </div>
   ) : (
-    <div className='flex items-center justify-center w-full h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100'>
-      <p className='text-xl font-semibold text-purple-500 animate-pulse'>Loading...</p>
+    <div className='flex items-center justify-center w-full h-screen bg-white'>
+      <p className='text-xl font-semibold text-gray-500 animate-pulse'>Loading...</p>
     </div>
   )
 }

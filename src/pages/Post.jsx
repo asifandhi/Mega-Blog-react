@@ -31,14 +31,14 @@ export default function Post() {
     };
 
     return post ? (
-        <div className='min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-10'>
+        <div className='min-h-screen bg-gray-600 py-8'>
             <Container>
-                <div className='bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-100'>
+                <div className='bg-black rounded-2xl shadow-xl overflow-hidden border '>
                     <div className='relative'>
                         <img
                             src={appwriteService.getFilePreview(post.featuresimage)}
                             alt={post.title}
-                            className='w-full max-h-[480px] object-cover'
+                            className='w-full max-h-[480px]  object-cover'
                         />
                         {isAuthor && (
                             <div className='absolute right-4 top-4 flex gap-2'>
@@ -54,8 +54,8 @@ export default function Post() {
                         )}
                     </div>
                     <div className='p-8'>
-                        <h1 className='text-3xl font-bold text-purple-700 mb-6'>{post.title}</h1>
-                        <div className='prose max-w-none text-gray-700 leading-relaxed'>
+                        <h1 className='text-3xl font-bold text-white mb-6'>{post.title}</h1>
+                        <div className='prose max-w-none text-gray-300 leading-relaxed'>
                             {parse(post.content)}
                         </div>
                     </div>

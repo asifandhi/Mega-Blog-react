@@ -15,10 +15,15 @@ function Login() {
     const login = async (data) => {
         setError("");
         try {
-            const session = await authService.login(data);
+            const session = await authService.login(data.email, data.password);
             if(session){
                 const userData = await authService.getCurrentUser();
-                if(userData) dispatch(authLogin(userData));
+                if(userData) dispatch(authLogin({
+                    $id: userData.$id,
+                    email: userData.email,
+                    name: userData.name,
+
+                }));
                 navigate("/");
             }
         } catch (error) {
@@ -27,17 +32,17 @@ function Login() {
     }
 
     return (
-        <div className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100'>
-            <div className='mx-auto w-full max-w-lg bg-white rounded-2xl p-10 shadow-xl border border-purple-100'>
+        <div className='flex items-center justify-center w-full min-h-screen bg-gray-500 px-4'>
+            <div className='mx-auto w-full max-w-md bg-black  rounded-xl p-8 shadow-md border border-gray-200'>
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />
                     </span>
                 </div>
-                <h2 className="text-center text-2xl font-bold leading-tight text-purple-700">Sign in to your account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <h2 className="text-center text-2xl font-bold leading-tight text-white">Sign in to your account</h2>
+                <p className="mt-2 text-center text-base text-gray-400/60">
                     Don&apos;t have any account?&nbsp;
-                    <Link to="/signup" className="font-semibold text-pink-500 hover:text-purple-600 transition-colors duration-200">
+                    <Link to="/signup" className="font-semibold text-white hover:text-amber-400-600 transition-colors duration-200">
                         Sign Up
                     </Link>
                 </p>
@@ -62,7 +67,7 @@ function Login() {
                             placeholder="Enter your password"
                             {...register("password", { required: true })}
                         />
-                        <Button type="submit" bgColor="bg-gradient-to-r from-pink-500 to-purple-600" className="w-full py-3 text-base">
+                        <Button type="submit"  className="w-full py-3 bg-gray-200 text-black">
                             Sign in
                         </Button>
                     </div>
